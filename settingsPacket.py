@@ -1,5 +1,7 @@
 x=0
 v=0
+settings3=0
+
 class settings:
     def help():
         chs = str(input('Інформація про команди'))
@@ -20,7 +22,7 @@ class settings:
 
     def print():
         global x
-        set = open("E:\PyProjectsFiles\PixelMixer\Settings.json", 'r+')
+        set = open("Settings.json", 'r')
         settings = set.read()
         while x < len(settings):
             print(settings[x])
@@ -28,7 +30,7 @@ class settings:
             pass
 
     def backup(filename,mode):
-        set = open("E:\PyProjectsFiles\PixelMixer\Settings.json", 'r+')
+        set = open("Settings.json", 'r+')
         backup = open(filename,mode)
         set.write(backup.read())
         print("Backup complete")
@@ -39,6 +41,10 @@ class settings:
 
     def clearing(divider):
         global v
-        set = open("E:\PyProjectsFiles\PixelMixer\Settings.json", 'r+')
-        settings2 = set.read()
-        while v <= settings2.index():
+        global settings3
+        set = open("Settings.json", 'r+')
+        settings = set.read()
+        while v <= int('2'):
+            settings3 = settings.split(divider)
+            settings3.pop(settings3.index(divider))
+        return settings3
